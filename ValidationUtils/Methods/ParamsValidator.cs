@@ -7,7 +7,7 @@ namespace ValidationUtils.Methods
     /// <summary>
     /// Validator class that contains methods that let you validate some parameters
     /// </summary>
-    public class ParamsValidator
+    public static class ParamsValidator
     {
         /// <summary>
         /// Generate an exception if an item is null
