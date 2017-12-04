@@ -13,19 +13,6 @@ Set-Location -Path $locationNuspec
 write-host "Update the nuget.exe file" -foreground "DarkGray"
 .\NuGet update -self
 
-$strPath = $location + '\ValidationUtils\bin\Release\ValidationUtils.dll'
-
-$VersionInfos = [System.Diagnostics.FileVersionInfo]::GetVersionInfo($strPath)
-$ProductVersion = $VersionInfos.ProductVersion
-write-host "Product version : " $ProductVersion -foreground "Green"
-
-write-host "Packaging to nuget..." -foreground "Magenta"
-
-write-host "Generate nuget packages" -foreground "Green"
-
-write-host "Generate nuget package for ValidationUtils.nuspec" -foreground "DarkGray"
-.\NuGet.exe pack ValidationUtils.nuspec -Version $ProductVersion
-
 $apiKey = $env:NuGetApiKey
 	
 write-host "Publish nuget packages" -foreground "Green"
