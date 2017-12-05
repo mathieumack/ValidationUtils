@@ -14,14 +14,13 @@ write-host "Update the nuget.exe file" -foreground "DarkGray"
 
 $apiKey = $env:NuGetApiKey
 
-$strPath = $location + '\ValidationUtils\bin\Release\netstandard1.4\ValidationUtils.dll'
-
-$VersionInfos = [System.Diagnostics.FileVersionInfo]::GetVersionInfo($strPath)
-$ProductVersion = $VersionInfos.ProductVersion
-write-host "Product version : " $ProductVersion -foreground "Green"
-	
 write-host "Publish nuget packages" -foreground "Green"
 
-$packagePath = "../ValidationUtils/bin/Release/ValidationUtils.$ProductVersion.nupkg"
-write-host $packagePath -foreground "DarkGray"
-.\NuGet push $packagePath -Source https://www.nuget.org/api/v2/package -ApiKey $apiKey
+foreach ($artifactName in $artifacts.keys) {
+    $current = $artifacts[$artifactName]
+ 
+    $packagePath = $current.path
+    
+    write-host $packagePath -foreground "DarkGray"
+    .\NuGet push $packagePath -Source https://www.nuget.org/api/v2/package -ApiKey $apiKey
+}
