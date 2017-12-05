@@ -2,7 +2,6 @@ write-host "**************************" -foreground "Cyan"
 write-host "*   Packaging to nuget   *" -foreground "Cyan"
 write-host "**************************" -foreground "Cyan"
 
-#$location  = "C:\Sources\NoSqlRepositories";
 $location  = $env:APPVEYOR_BUILD_FOLDER
 
 $locationNuspec = $location + "\nuspec"
@@ -17,5 +16,6 @@ $apiKey = $env:NuGetApiKey
 	
 write-host "Publish nuget packages" -foreground "Green"
 
-write-host ValidationUtils.$ProductVersion.nupkg -foreground "DarkGray"
-.\NuGet push ValidationUtils.$ProductVersion.nupkg -Source https://www.nuget.org/api/v2/package -ApiKey $apiKey
+$packagePath = "../ValidationUtils/ValidationUtils/bin/Release/ValidationUtils.$ProductVersion.nupkg"
+write-host $packagePath -foreground "DarkGray"
+.\NuGet push $packagePath -Source https://www.nuget.org/api/v2/package -ApiKey $apiKey
