@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.4</TargetFramework>
+    <TargetFramework>netstandard1.0</TargetFramework>
     <Authors>MACK Mathieu</Authors>
     <Company>MACK Mathieu</Company>
     <PackageLicenseUrl>https://github.com/mathieumack/ValidationUtils/blob/master/LICENSE</PackageLicenseUrl>
